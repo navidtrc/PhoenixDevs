@@ -1,9 +1,13 @@
-﻿using Framework.Core.Domain.Abstractions;
+﻿using FluentValidation;
+using Framework.Core.Domain.Abstractions;
 using Framework.EndPoints.Web;
+using Hesabo.Application.Behaviours;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Phoenix.Application;
 using Phoenix.Application.Behavior;
+using Phoenix.Application.SubscriptionPlan.Commands.Create;
 using Phoenix.Domain.Aggregates.User;
 using Phoenix.Infrastructure.Contexts;
 using Phoenix.Infrastructure.Initializer;
@@ -87,8 +91,12 @@ public static class ServiceCollectionExtension
     {
         _builder.Services.AddMediatR(cfg =>
         {
-            cfg.RegisterServicesFromAssemblies(ServiceAssemblies.WEB_ASSEMBLY, ServiceAssemblies.APPLICATION_ASSEMBLY);
+            cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly(), ServiceAssemblies.APPLICATION_ASSEMBLY);
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
         });
+        _builder.Services.AddValidatorsFromAssemblyContaining<CreateSubscriptionPlanCommand>(ServiceLifetime.Transient);
         _builder.Services.AddScoped<IDomainEventDispatcher, EventDispatcher>();
     }
 
