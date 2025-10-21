@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Filters" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" />
+        <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Framework\Core\Framework.Core.Domain\Framework.Core.Domain.csproj" />
+      <ProjectReference Include="..\..\Framework\EndPoints\Framework.EndPoints.Web\Framework.EndPoints.Web.csproj" />
+      <ProjectReference Include="..\Phoenix.Application\Phoenix.Application.csproj" />
+      <ProjectReference Include="..\Phoenix.Domain\Phoenix.Domain.csproj" />
+      <ProjectReference Include="..\Phoenix.Infrastructure\Phoenix.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

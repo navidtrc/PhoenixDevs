@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Framework\Core\Framework.Core.Domain\Framework.Core.Domain.csproj" />
+      <ProjectReference Include="..\..\Framework\Core\Framework.Core.RequestResponse\Framework.Core.RequestResponse.csproj" />
+      <ProjectReference Include="..\Phoenix.Domain\Phoenix.Domain.csproj" />
+      <ProjectReference Include="..\Phoenix.Infrastructure\Phoenix.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" />
+      <PackageReference Include="Newtonsoft.Json" />
+    </ItemGroup>
+
+</Project>
