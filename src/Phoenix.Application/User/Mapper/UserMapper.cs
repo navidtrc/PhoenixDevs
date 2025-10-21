@@ -13,8 +13,8 @@ public static class UserMapper
             Id = user.Id,
             Email = user.Email.ToString(),
             Username = user.Username,
-            CurrentPlanId = user.CurrentPlan?.Id,
-            ReservedPlanId = user.ReservedPlan?.Id,
+            CurrentPlanId = user.CurrentPlanId,
+            ReservedPlanId = user.ReservedPlanId,
         };
     }
 

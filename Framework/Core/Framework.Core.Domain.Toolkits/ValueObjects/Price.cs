@@ -13,12 +13,6 @@ public class Price : BaseValueObject<Price>
     #region Constructors and Factories
     public Price(decimal value)
     {
-        Guard.Against.OutOfRange(value, nameof(Price), GlobalConstants.PRICE.MinValue, GlobalConstants.PRICE.MinValue, null, () =>
-        {
-            ValueBetweenException.Throw(nameof(Price), (long)GlobalConstants.PRICE.MinValue, (long)GlobalConstants.PRICE.MinValue);
-            return null;
-        });
-
         Amount = value;
     }
     private Price() { }

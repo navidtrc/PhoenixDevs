@@ -141,12 +141,11 @@ public class SubscriptionPlan : AggregateRoot
                 nameof(price),
                 Consts.SUBSCRIPTION_PLAN_PRICE.MinValue,
                 Consts.SUBSCRIPTION_PLAN_PRICE.MaxValue,
-                message: null,
                 exceptionCreator: () =>
                 {
                     ValueBetweenException.Throw(nameof(price),
-                        (long)Consts.SUBSCRIPTION_PLAN_PRICE.MinValue,
-                        (long)Consts.SUBSCRIPTION_PLAN_PRICE.MaxValue);
+                        Consts.SUBSCRIPTION_PLAN_PRICE.MinValue,
+                        Consts.SUBSCRIPTION_PLAN_PRICE.MaxValue);
                     return null!;
                 });
         }
@@ -158,7 +157,6 @@ public class SubscriptionPlan : AggregateRoot
                 nameof(duration),
                 Consts.SUBSCRIPTION_PLAN_DURATION.MinValue,
                 Consts.SUBSCRIPTION_PLAN_DURATION.MaxValue,
-                message: null,
                 exceptionCreator: () =>
                 {
                     ValueBetweenException.Throw(nameof(duration),

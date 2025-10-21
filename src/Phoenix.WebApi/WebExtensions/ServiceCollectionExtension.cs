@@ -87,7 +87,7 @@ public static class ServiceCollectionExtension
     {
         _builder.Services.AddMediatR(cfg =>
         {
-            cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly(), ServiceAssemblies.WEB_ASSEMBLY);
+            cfg.RegisterServicesFromAssemblies(ServiceAssemblies.WEB_ASSEMBLY, ServiceAssemblies.APPLICATION_ASSEMBLY);
         });
         _builder.Services.AddScoped<IDomainEventDispatcher, EventDispatcher>();
     }

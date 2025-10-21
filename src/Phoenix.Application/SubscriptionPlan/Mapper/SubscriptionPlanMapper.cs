@@ -10,6 +10,7 @@ public static class SubscriptionPlanMapper
 
         return new SubscriptionPlanDto
         {
+            Id = plan.Id,
             Title = plan.Title,
             Description = plan.Description,
             Duration = plan.Duration,
