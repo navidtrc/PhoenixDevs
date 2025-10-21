@@ -11,7 +11,4 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Common\Utilities\Utilities.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Enums\" />
-    </ItemGroup>
 </Project>

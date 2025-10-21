@@ -9,8 +9,6 @@
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json"/>
         <PackageReference Include="Swashbuckle.AspNetCore"/>
-        <PackageReference Include="Asp.Versioning.Mvc"/>
-        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer"/>
     </ItemGroup>
     <ItemGroup Label="Serilog">
         <PackageReference Include="Serilog"/>
