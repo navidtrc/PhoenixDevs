@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Phoenix.Application;
 using Phoenix.Application.Behavior;
-using Phoenix.Domain.Aggregates.Subscription;
 using Phoenix.Domain.Aggregates.User;
 using Phoenix.Infrastructure.Contexts;
 using Phoenix.Infrastructure.Initializer;
@@ -25,6 +24,7 @@ public static class ServiceCollectionExtension
         ConfigureDbContext();
         ConfigureMediatR();
         ConfigureEndpointsService();
+        ConfigureCors();
         ConfigureSwaggerGen();
         ConfigureHealthChecks();
         return _appSettings;
@@ -49,11 +49,8 @@ public static class ServiceCollectionExtension
     private static void ConfigureServices()
     {
         _builder.Services.AddHttpContextAccessor();
-        _builder.Services.AddControllers().AddNewtonsoftJson();
-
-        _builder.Services.AddScoped<ApplicationDbContextInitializer>();
-        
-        _builder.Services.AddHttpClient();
+        _builder.Services.AddControllersWithViews();
+        _builder.Services.AddEndpointsApiExplorer();
     }
     
 
@@ -71,8 +68,6 @@ public static class ServiceCollectionExtension
                 db.MigrationsAssembly(typeof(ApplicationDbContextSchema).Assembly.FullName);
             });
         });
-
-
         _builder.Services.AddDbContext<ApplicationDbContextReadOnly>(options =>
         {
             options.UseSqlServer(_builder.Configuration.GetConnectionString("ReadOnlyConnection"), db =>
@@ -106,10 +101,24 @@ public static class ServiceCollectionExtension
     {
         _builder.Services.AddHealthChecks();
     }
-
+    private static void ConfigureCors()
+    {
+        _builder.Services.AddCors(options =>
+        {
+            var allowOrigins = _builder.Configuration.GetSection(nameof(AppSettings.AllowOrigins)).Get<string[]>();
+            options.AddDefaultPolicy(builder => builder
+                .SetIsOriginAllowedToAllowWildcardSubdomains()
+                .WithOrigins(allowOrigins!)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithExposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "X-Pagination", "Otp-Code")
+            );
+        });
+    }
     private static void ConfigureSwaggerGen()
     {
-        _builder.ConfigureSwaggerGen(_appSettings.ServiceName, _appSettings.ServiceName);
+        _builder.ConfigureSwaggerGen(_appSettings.ServiceName);
     }
 }
 

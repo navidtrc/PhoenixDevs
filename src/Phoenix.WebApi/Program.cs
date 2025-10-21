@@ -13,12 +13,18 @@ app.UseCustomExceptionHandler();
 
 await app.InitializeDatabaseAsync();
 
-if (!app.Environment.IsProduction())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Local"))
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
+
+app.UseCors();
+
 app.UseHttpsRedirection();
-app.UseSerilogRequestLogging();
+
 app.MapControllers();
+
 app.Run();

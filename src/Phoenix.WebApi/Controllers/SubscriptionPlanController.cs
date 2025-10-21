@@ -69,7 +69,7 @@ public class SubscriptionPlanController : ControllerBase
         var result = await _mediator.Send(new MarkNotReadySubscriptionPlanCommand(planId), ct);
         return Ok(result);
     }
-    [HttpGet("{planId:ulid}")]
+    [HttpGet("{planId}")]
     [ProducesResponseType(typeof(ResponseBase<SubscriptionPlanDto>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> GetById([FromRoute] Ulid planId, CancellationToken ct)

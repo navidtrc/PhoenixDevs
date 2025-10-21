@@ -25,12 +25,7 @@
     <PackageVersion Include="RestSharp" Version="110.2.0" />
     <PackageVersion Include="Scrutor" Version="5.0.2" />
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="6.1.2" />
-    <PackageVersion Include="StackExchange.Redis" Version="2.9.32" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.6" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.6" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Filters" Version="9.0.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Newtonsoft" Version="9.0.6" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.ReDoc" Version="9.0.6" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="7.2.0" />
     <PackageVersion Include="Asp.Versioning.Mvc" Version="8.1.0" />
     <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
     <PackageVersion Include="AutoMapper" Version="15.0.1" />
